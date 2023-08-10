@@ -25,5 +25,14 @@ export default defineConfig({
         additionalData: '@import "./src/styles/variable.scss";'
       }
     }
+  },
+  // 服务配置
+  server: {
+    host: '0.0.0.0',
+    port: 5820,
+    proxy: {
+      // 字符串简写写法：http://localhost:5173/foo -> http://localhost:4567/foo
+      // '/api_v1': 'https://www.fastmock.site/mock/0c9368c9f0ac24733913c755609726b9/api_v1'
+    }
   }
 })
