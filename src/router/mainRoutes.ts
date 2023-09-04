@@ -3,17 +3,51 @@ let routes = [
     path: '/userManage',
     component: () => import('@/views/home/userManage/index.vue'),
     name: 'userManage',
+    meta: {
+      title: '用户管理',
+      icon: 'User'
+    },
     children: [
       {
         path: '/userList',
         component: () => import('@/views/home/userManage/userList/index.vue'),
-        name: 'userList'
+        name: 'userList',
+        meta: {
+          title: '用户列表',
+          icon: 'List'
+        },
+        children: [
+          {
+            path: '/userListSub1',
+            component: () =>
+              import('@/views/home/userManage/userList/index.vue'),
+            name: 'userListSub1',
+            meta: {
+              title: '用户列表1',
+              icon: 'List'
+            }
+          },
+          {
+            path: '/userListSub2',
+            component: () =>
+              import('@/views/home/userManage/userList/index.vue'),
+            name: 'userListSub2',
+            meta: {
+              title: '用户列表2',
+              icon: 'List'
+            }
+          }
+        ]
       },
       {
         path: '/userDetails',
         component: () =>
           import('@/views/home/userManage/userDetails/index.vue'),
-        name: 'userDetails'
+        name: 'userDetails',
+        meta: {
+          title: '用户详情',
+          icon: 'ZoomIn'
+        }
       }
     ]
   },
@@ -21,17 +55,29 @@ let routes = [
     path: '/orderManage',
     component: () => import('@/views/home/orderManage/index.vue'),
     name: 'orderManage',
+    meta: {
+      title: '订单管理',
+      icon: 'Tickets'
+    },
     children: [
       {
         path: '/orderList',
         component: () => import('@/views/home/orderManage/orderList/index.vue'),
-        name: 'orderList'
+        name: 'orderList',
+        meta: {
+          title: '订单列表',
+          icon: 'List'
+        }
       },
       {
         path: '/orderDetails',
         component: () =>
           import('@/views/home/orderManage/orderDetails/index.vue'),
-        name: 'orderDetails'
+        name: 'orderDetails',
+        meta: {
+          title: '订单详情',
+          icon: 'ZoomIn'
+        }
       }
     ]
   }

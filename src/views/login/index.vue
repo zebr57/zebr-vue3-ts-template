@@ -66,12 +66,13 @@ const handleLogin = async (formEl: FormInstance | undefined) => {
       requestLogin.connect(formData).then((res: responseDataType) => {
         if (res.code == '200') {
           userStore.setUserInfo(res.data)
+          localStorage.setItem('token', res.data.token)
         }
         ElMessage({
           message: res.message,
           type: res.code == '200' ? 'success' : 'error'
         })
-        router.push('/userlist')
+        router.push('/')
       })
     } else {
       console.log('err submit:', fields)
