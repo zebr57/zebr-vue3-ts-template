@@ -8,6 +8,7 @@ import { onMounted } from 'vue'
 import { requestLogin } from './https/test'
 
 onMounted(() => {
+  return
   const params = {
     username: 'admin',
     pwd: 123456

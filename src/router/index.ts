@@ -1,7 +1,7 @@
 // 通过vue-router插件实现模板路由配置
 import { createRouter, createWebHashHistory } from 'vue-router'
 import mainRoutes from './mainRoutes'
-console.log(mainRoutes)
+
 // 创建路由器示例
 let router = createRouter({
   // 路由模式hash

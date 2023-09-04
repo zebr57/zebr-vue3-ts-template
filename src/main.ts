@@ -10,6 +10,9 @@ import './styles/index.scss' // 引入全局样式
 import globalComponent from './components/index'
 // 路由
 import router from './router'
+// 全局仓库
+import pinia from './store'
+
 const app = createApp(App)
 
 app.use(ElementPlus, {
@@ -18,6 +21,7 @@ app.use(ElementPlus, {
 
 app.use(globalComponent)
 app.use(router)
+app.use(pinia)
 
 // svg插件应用配置
 import 'virtual:svg-icons-register'
