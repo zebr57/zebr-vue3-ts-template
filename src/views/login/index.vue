@@ -67,6 +67,7 @@ const handleLogin = async (formEl: FormInstance | undefined) => {
         if (res.code == '200') {
           userStore.setUserInfo(res.data)
           localStorage.setItem('token', res.data.token)
+          localStorage.setItem('username', res.data.username)
         }
         ElMessage({
           message: res.message,
