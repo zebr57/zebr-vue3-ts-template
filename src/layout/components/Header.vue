@@ -3,6 +3,11 @@
     <div class="header_container_icon">
       <el-icon v-show="isCollapse" @click="handleToggle"><Expand /></el-icon>
       <el-icon v-show="!isCollapse" @click="handleToggle"><Fold /></el-icon>
+      <el-breadcrumb :separator-icon="ArrowRight">
+        <el-breadcrumb-item v-for="item in currentRouteList" :key="item.path">{{
+          item.meta.title
+        }}</el-breadcrumb-item>
+      </el-breadcrumb>
     </div>
     <div class="header_container_user_info">
       <el-dropdown trigger="click" @command="handleCommand">
@@ -29,22 +34,26 @@ import useMainStore from '@/store/modules/main'
 import { UserInfo } from '@/store/modules/type'
 import useUserStore from '@/store/modules/user'
 import { ElMessage } from 'element-plus'
+import { ArrowRight } from '@element-plus/icons-vue'
 import { computed } from 'vue'
 
 let mainStore = useMainStore()
 let userStore = useUserStore()
-
+/* ===================================== data ===================================== */
 const isCollapse = computed(() => {
   return mainStore.isCollapse
 })
 const username = computed(() => {
   return userStore.userInfo.username || localStorage.getItem('username')
 })
-
+const currentRouteList = computed(() => {
+  const len = router.currentRoute.value.matched.length - 1
+  return router.currentRoute.value.matched.slice(1, len)
+})
+/* ===================================== methods ===================================== */
 const handleToggle = () => {
   mainStore.setIsCollapse(!isCollapse.value)
 }
-
 const handleCommand = (command: string | number | object) => {
   switch (command) {
     case 'profile':
@@ -71,6 +80,9 @@ const handleCommand = (command: string | number | object) => {
   border-bottom: 1px solid #eee;
   &_icon {
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
   &_user_info {
     cursor: pointer;
