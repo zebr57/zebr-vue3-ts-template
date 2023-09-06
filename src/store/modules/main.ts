@@ -4,13 +4,17 @@ const mainStore = defineStore('main', {
   state: () => {
     return {
       sideMenuWidth: 210,
-      isCollapse: false
+      isCollapse: false,
+      refresh: 1
     }
   },
   actions: {
     setIsCollapse(value: boolean) {
       this.isCollapse = value
       this.sideMenuWidth = value ? 64 : 210
+    },
+    setRefresh() {
+      this.refresh += 1
     }
   },
   getters: {

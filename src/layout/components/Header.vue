@@ -10,6 +10,32 @@
       </el-breadcrumb>
     </div>
     <div class="header_container_user_info">
+      <el-tooltip
+        class="box-item"
+        effect="light"
+        content="全屏"
+        placement="bottom"
+      >
+        <el-icon @click="handleFullScreen"><FullScreen /></el-icon>
+      </el-tooltip>
+      <el-tooltip
+        class="box-item"
+        effect="light"
+        content="刷新"
+        placement="bottom"
+      >
+        <el-icon @click="handleRefresh"><Refresh /></el-icon>
+      </el-tooltip>
+      <el-tooltip
+        class="box-item"
+        effect="light"
+        content="设置"
+        placement="bottom"
+      >
+        <el-icon @click="handleSetting"><Setting /></el-icon>
+      </el-tooltip>
+      <el-divider direction="vertical" content-position="center"></el-divider>
+
       <el-dropdown trigger="click" @command="handleCommand">
         <span>
           Hi, {{ username }}
@@ -29,13 +55,18 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import router from '@/router'
 import useMainStore from '@/store/modules/main'
 import { UserInfo } from '@/store/modules/type'
 import useUserStore from '@/store/modules/user'
 import { ElMessage } from 'element-plus'
-import { ArrowRight } from '@element-plus/icons-vue'
-import { computed } from 'vue'
+import {
+  ArrowRight,
+  FullScreen,
+  Refresh,
+  Setting
+} from '@element-plus/icons-vue'
 
 let mainStore = useMainStore()
 let userStore = useUserStore()
@@ -54,6 +85,17 @@ const currentRouteList = computed(() => {
 const handleToggle = () => {
   mainStore.setIsCollapse(!isCollapse.value)
 }
+const handleFullScreen = () => {
+  console.log('handleFullScreen')
+}
+const handleRefresh = () => {
+  mainStore.setRefresh()
+  console.log('handleRefresh')
+}
+const handleSetting = () => {
+  console.log('handleSetting')
+}
+
 const handleCommand = (command: string | number | object) => {
   switch (command) {
     case 'profile':
@@ -86,6 +128,9 @@ const handleCommand = (command: string | number | object) => {
   }
   &_user_info {
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
 }
 </style>

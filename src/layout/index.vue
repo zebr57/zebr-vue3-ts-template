@@ -14,7 +14,11 @@
           </el-header>
           <el-main class="content_box">
             <!-- Main content -->
-            <router-view></router-view>
+            <router-view v-slot="{ Component }">
+              <transition name="fade">
+                <component :is="Component" v-if="flag"></component>
+              </transition>
+            </router-view>
           </el-main>
         </el-container>
 
@@ -34,16 +38,23 @@ import SideMenu from './components/sideMenu/index.vue'
 import Header from './components/Header.vue'
 
 import useMainStore from '@/store/modules/main'
-import { computed } from 'vue'
+import { Transition, computed, ref, nextTick, watch } from 'vue'
 
 let mainStore = useMainStore()
 
+let flag = ref(true)
+watch(
+  () => mainStore.refresh,
+  () => {
+    flag.value = false
+    nextTick(() => {
+      flag.value = true
+    })
+  }
+)
 let sideMenuWidth = computed(() => {
   return mainStore.sideMenuWidth
 })
-let mainHeight = () => {
-  return { height: `calc(100vh - 40px)` }
-}
 </script>
 
 <style lang="scss" scoped>

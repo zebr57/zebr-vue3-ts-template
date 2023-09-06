@@ -3,8 +3,8 @@
     <div class="side_menu_container">
       <el-menu
         :router="true"
-        default-active="charts"
         class="side_el_menu"
+        :default-active="currentRouteName"
         :collapse="isCollapse"
         :collapse-transition="false"
         @open="handleOpen"
@@ -21,12 +21,15 @@
 </template>
 
 <script setup lang="ts">
+import router from '@/router'
 import MenuItem from './MenuItem.vue'
 import menuList from '@/router/mainRoutes'
 import useMainStore from '@/store/modules/main'
 import { computed } from 'vue'
 
 let mainStore = useMainStore()
+// 当前路由名，用于刷新页面高亮当前菜单选项
+let currentRouteName = router.currentRoute.value.name
 
 let isCollapse = computed(() => {
   return mainStore.isCollapse
