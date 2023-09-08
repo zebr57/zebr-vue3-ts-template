@@ -13,18 +13,18 @@
       <el-tooltip
         class="box-item"
         effect="light"
-        content="全屏"
-        placement="bottom"
-      >
-        <el-icon @click="handleFullScreen"><FullScreen /></el-icon>
-      </el-tooltip>
-      <el-tooltip
-        class="box-item"
-        effect="light"
         content="刷新"
         placement="bottom"
       >
         <el-icon @click="handleRefresh"><Refresh /></el-icon>
+      </el-tooltip>
+      <el-tooltip
+        class="box-item"
+        effect="light"
+        content="全屏"
+        placement="bottom"
+      >
+        <el-icon @click="handleFullScreen"><FullScreen /></el-icon>
       </el-tooltip>
       <el-tooltip
         class="box-item"
@@ -86,6 +86,12 @@ const handleToggle = () => {
   mainStore.setIsCollapse(!isCollapse.value)
 }
 const handleFullScreen = () => {
+  let full = document.fullscreenElement
+  if (!full) {
+    document.documentElement.requestFullscreen()
+  } else {
+    document.exitFullscreen()
+  }
   console.log('handleFullScreen')
 }
 const handleRefresh = () => {

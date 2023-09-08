@@ -32,6 +32,9 @@ app.use(pinia)
 
 // svg插件应用配置
 import 'virtual:svg-icons-register'
+// 鉴权
+import './permission.ts'
 
-console.log(import.meta.env)
+// console.log(import.meta.env)
+
 app.mount('#app')
