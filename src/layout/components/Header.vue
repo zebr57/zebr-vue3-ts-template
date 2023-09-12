@@ -52,15 +52,19 @@
       </el-dropdown>
     </div>
   </div>
+  <SettingDrawer ref="refShowSetting" />
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 import router from '@/router'
 import useMainStore from '@/store/modules/main'
 import { UserInfo } from '@/store/modules/type'
 import useUserStore from '@/store/modules/user'
 import { ElMessage } from 'element-plus'
+
+import SettingDrawer from './SettingDrawer.vue'
+
 import {
   ArrowRight,
   FullScreen,
@@ -81,6 +85,8 @@ const currentRouteList = computed(() => {
   const len = router.currentRoute.value.matched.length - 1
   return router.currentRoute.value.matched.slice(1, len)
 })
+const refShowSetting = ref()
+
 /* ===================================== methods ===================================== */
 const handleToggle = () => {
   mainStore.setIsCollapse(!isCollapse.value)
@@ -99,7 +105,7 @@ const handleRefresh = () => {
   console.log('handleRefresh')
 }
 const handleSetting = () => {
-  console.log('handleSetting')
+  refShowSetting.value.handleOpen()
 }
 
 const handleCommand = (command: string | number | object) => {

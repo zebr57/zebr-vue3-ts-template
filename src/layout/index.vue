@@ -42,6 +42,7 @@ import { Transition, computed, ref, nextTick, watch } from 'vue'
 
 let mainStore = useMainStore()
 
+// 刷新
 let flag = ref(true)
 watch(
   () => mainStore.refresh,
@@ -52,6 +53,7 @@ watch(
     })
   }
 )
+// 折叠菜单宽度改变
 let sideMenuWidth = computed(() => {
   return mainStore.sideMenuWidth
 })

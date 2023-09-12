@@ -3,6 +3,7 @@ import App from '@/App.vue'
 
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
+import 'element-plus/theme-chalk/dark/css-vars.css'
 // @ts-ignore 忽略，否则报错打包不成功
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 // 引入所有图标并注册
