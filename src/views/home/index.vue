@@ -1,6 +1,4 @@
-<template>
-  <router-view></router-view>
-</template>
+<template>hi, 欢迎来到首页</template>
 
 <script setup lang="ts"></script>
 

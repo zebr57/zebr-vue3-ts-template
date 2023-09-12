@@ -1,7 +1,7 @@
 let routes = [
   {
     path: '/userManage',
-    component: () => import('@/views/home/userManage/index.vue'),
+    component: () => import('@/layout/index.vue'),
     name: 'userManage',
     meta: {
       title: '用户管理',
@@ -53,7 +53,7 @@ let routes = [
   },
   {
     path: '/orderManage',
-    component: () => import('@/views/home/orderManage/index.vue'),
+    component: () => import('@/layout/index.vue'),
     name: 'orderManage',
     meta: {
       title: '订单管理',
@@ -80,6 +80,15 @@ let routes = [
         }
       }
     ]
+  },
+  {
+    path: '/screen',
+    component: () => import('@/views/screen/index.vue'),
+    name: 'screen',
+    meta: {
+      title: '数据大屏',
+      icon: ''
+    }
   }
 ]
 

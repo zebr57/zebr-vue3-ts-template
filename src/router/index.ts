@@ -7,12 +7,18 @@ let router = createRouter({
   // 路由模式hash
   history: createWebHashHistory(),
   routes: [
+    ...mainRoutes,
     {
       path: '/',
-      component: () => import('@/layout/index.vue'),
-      name: 'layout',
+      name: '/',
+      // redirect: '/home',
       redirect: '/userList',
-      children: [...mainRoutes]
+      children: []
+    },
+    {
+      path: '/home',
+      component: () => import('@/views/home/index.vue'),
+      name: 'home'
     },
     {
       path: '/login',
