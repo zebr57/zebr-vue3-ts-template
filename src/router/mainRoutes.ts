@@ -1,4 +1,4 @@
-let routes = [
+const routes = [
   {
     path: '/userManage',
     component: () => import('@/layout/index.vue'),
@@ -87,7 +87,7 @@ let routes = [
     name: 'screen',
     meta: {
       title: '数据大屏',
-      icon: ''
+      icon: 'Monitor'
     }
   }
 ]

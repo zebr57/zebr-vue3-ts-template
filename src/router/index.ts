@@ -3,7 +3,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import mainRoutes from './mainRoutes'
 
 // 创建路由器示例
-let router = createRouter({
+const router = createRouter({
   // 路由模式hash
   history: createWebHashHistory(),
   routes: [
@@ -19,6 +19,11 @@ let router = createRouter({
       path: '/home',
       component: () => import('@/views/home/index.vue'),
       name: 'home'
+    },
+    {
+      path: '/test',
+      component: () => import('@/views/test/index.vue'),
+      name: 'test'
     },
     {
       path: '/login',

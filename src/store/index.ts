@@ -1,7 +1,7 @@
 // 引入仓库
 import { createPinia } from 'pinia'
 // 创建大仓库
-let pinia = createPinia()
+const pinia = createPinia()
 // 导出仓库
 export default pinia
 

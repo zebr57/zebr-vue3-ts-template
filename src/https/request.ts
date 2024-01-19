@@ -178,7 +178,7 @@ export default class HttpRequest {
   getParams(data: object) {
     switch (this.xhr_type) {
       case requestTypeMap.formData:
-        let formData = new FormData()
+        const formData = new FormData()
 
         Object.entries(data).forEach(([key, value]) => {
           formData.append(key, value)
