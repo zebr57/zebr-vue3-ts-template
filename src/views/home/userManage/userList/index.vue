@@ -5,6 +5,7 @@
     <div v-for="item in list" :key="item">
       {{ item }}
     </div>
+    <div v-html="htmlStr"></div>
   </div>
 </template>
 
@@ -13,10 +14,22 @@ import { ref, toRef, reactive, onMounted } from 'vue'
 
 let user = ref({})
 const userRef = toRef(user, 'value')
-
+const htmlStr = ref('<div>hello</div>')
 let list = reactive([])
 
 onMounted(() => {
+  function htmlEscape(htmlStr) {
+    let reg = /(<|>)/g
+    return htmlStr.replace(reg, (match) => {
+      if (match === '<') {
+        return '&lt;'
+      } else if (match === '>') {
+        return '&gt;'
+      }
+    })
+  }
+  htmlStr.value = htmlEscape('<div>hello</div>')
+
   setTimeout(() => {
     userRef.value = { name: 'Jane' }
     console.log(user)
